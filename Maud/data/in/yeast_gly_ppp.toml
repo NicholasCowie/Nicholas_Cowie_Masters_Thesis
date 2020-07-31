@@ -1,0 +1,526 @@
+###### Kinetic model ######
+[[compartments]]
+id = 'c'
+name = 'cytosol'
+volume = 1
+
+[[compartments]]
+id = 'e'
+name = 'external'
+volume = 1
+
+[[metabolites]]
+id = 'glc-D'
+name = 'glucose external'
+balanced = false
+compartment = 'e'
+
+[[metabolites]]
+id = 'glc-D'
+name = 'glucose cytosolic'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'atp'
+name = 'atp'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'adp'
+name = 'adp'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'nad'
+name = 'oxidised nicotinamide adenine dinucleotide'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'nadh'
+name = 'reduced nicotinamide adenine dinucleotide'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'nadp'
+name = 'oxidised nicotinamide adenine dinucleotide phosphate'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'nadph'
+name = 'reduced nicotinamide adenine dinucleotide phosphate'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = '3pg'
+name = '3-phosphoglycerate'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'g6p'
+name = 'glucose-6-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'f6p'
+name = 'fructose-6-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'fdp'
+name = 'fructose-1,6-bisphosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'g3p'
+name = 'glyceraldyhyde-3-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = '13dpg'
+name = '1,3-diphosphoglycerate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'pi'
+name = 'orthophosphate'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'co2'
+name = 'carbon dioxide'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'dhap'
+name = 'dihydroxyacetone phosphate'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'r5p'
+name = 'ribose-5-phosphate'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'ru5p-D'
+name = 'ribulose-5-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'xu5p-D'
+name = 'xylulose-5-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = '6pgl'
+name = '6-phosphoglucanolactone'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = '6pgc'
+name = '6-phosphoglucanoate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'e4p'
+name = 'erythrose-4-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 's7p'
+name = 'sedoheptulose-7-phosphate'
+balanced = true
+compartment = 'c'
+
+# Glycolysis
+[[reactions]]
+id = 'GLCt1'
+name = 'GLCt1'
+stoichiometry = { glc-D_e = -1, glc-D_c = 1}
+[[reactions.enzymes]]
+id = 'GLCt1'
+name = 'GLCt1'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'HEX1'
+name = 'HEX1'
+stoichiometry = { glc-D_c = -1, atp_c = -1, g6p_c = 1, adp_c = 1 }
+[[reactions.enzymes]]
+id = 'HEX1'
+name = 'HEX1'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'PGI'
+name = 'PGI'
+stoichiometry = { g6p_c = -1, f6p_c = 1}
+[[reactions.enzymes]]
+id = 'PGI'
+name = 'PGI'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'PFK'
+name = 'PFK'
+stoichiometry = { f6p_c = -1, atp_c = -1, fdp_c = 1, adp_c = 1 }
+[[reactions.enzymes]]
+id = 'PFK'
+name = 'PFK'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'FBA'
+name = 'FBA'
+stoichiometry = { fdp_c = -1, dhap_c = 1, g3p_c = 1 }
+[[reactions.enzymes]]
+id = 'FBA'
+name = 'FBA'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'TPI'
+name = 'TPI'
+stoichiometry = { dhap_c = -1, g3p_c = 1 }
+[[reactions.enzymes]]
+id = 'TPI'
+name = 'TPI'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'GAPD'
+name = 'GAPD'
+stoichiometry = { g3p_c = -1, nad_c = -1, pi_c = -1, nadh_c = 1, 13dpg_c = 1 }
+[[reactions.enzymes]]
+id = 'GAPD'
+name = 'GAPD'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'PGK'
+name = 'PGK'
+stoichiometry = { adp_c = -1, 13dpg_c = -1, 3pg_c = 1, atp_c = 1}
+[[reactions.enzymes]]
+id = 'PGK'
+name = 'PGK'
+mechanism = "modular_rate_law"
+
+# Pentose Phosphate Pathway
+[[reactions]]
+id = 'G6PDH2r'
+name = 'G6PDH2r'
+stoichiometry = { nadp_c = -1, g6p_c = -1, 6pgl_c = 1, nadph_c = 1}
+[[reactions.enzymes]]
+id = 'G6PDH2r'
+name = 'G6PDH2r'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'PGL'
+name = 'PGL'
+stoichiometry = { 6pgl_c = -1, 6pgc_c = 1 }
+[[reactions.enzymes]]
+id = 'PGL'
+name = 'PGL'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'GND'
+name = 'GND'
+stoichiometry = { 6pgc_c = -1, nadp_c = -1, ru5p-D_c = 1, nadph_c = 1, co2_c = 1}
+[[reactions.enzymes]]
+id = 'GND'
+name = 'GND'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'RPI'
+name = 'RPI'
+stoichiometry = { ru5p-D_c = -1, r5p_c = 1}
+[[reactions.enzymes]]
+id = 'RPI'
+name = 'RPI'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'RPE'
+name = 'RPE'
+stoichiometry = { ru5p-D_c = -1, xu5p-D_c = 1}
+[[reactions.enzymes]]
+id = 'RPE'
+name = 'RPE'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'TKT1'
+name = 'TKT1'
+stoichiometry = { xu5p-D_c = -1, r5p_c = -1, g3p_c = 1, s7p_c = 1 }
+[[reactions.enzymes]]
+id = 'TKT1'
+name = 'TKT1'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'TKT2'
+name = 'TKT2'
+stoichiometry = { e4p_c = -1, xu5p-D_c = -1, f6p_c = 1, g3p_c = 1 }
+[[reactions.enzymes]]
+id = 'TKT2'
+name = 'TKT2'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'TALA'
+name = 'TALA'
+stoichiometry = { s7p_c = -1, g3p_c = -1, e4p_c = 1, f6p_c = 1 }
+[[reactions.enzymes]]
+id = 'TALA'
+name = 'TALA'
+mechanism = "modular_rate_law"
+
+[[experiments]]
+id = 'condition_1'
+metadata = "Condition 1"
+metabolite_measurements = [
+  { target_id = 'glc-D_c', value = 1.06, uncertainty = 0.05},
+  { target_id = 'g6p_c', value = 0.14, uncertainty = 0.05},
+  { target_id = 'f6p_c', value = 0.1, uncertainty = 2},
+  { target_id = 'fdp_c', value = 0.022, uncertainty = 0.05},
+  { target_id = 'g3p_c', value = 0.034, uncertainty = 0.05},
+  { target_id = '13dpg_c', value = 0.01, uncertainty = 2},
+  { target_id = 'ru5p-D_c', value = 0.01, uncertainty = 2},
+  { target_id = 'xu5p-D_c', value = 0.044, uncertainty = 2},
+  { target_id = '6pgl_c', value = 1.66, uncertainty = 2},
+  { target_id = '6pgc_c', value = 0.16, uncertainty = 2},
+  { target_id = 'e4p_c', value = 0.004, uncertainty = 1},
+  { target_id = 's7p_c', value = 0.015, uncertainty = 0.05},
+]
+reaction_measurements = [
+  { target_id = 'HEX1', value = 1.53, uncertainty = 0.1},
+  { target_id = 'PFK', value = 1.45, uncertainty = 0.1},
+  { target_id = 'G6PDH2r', value = 0.0012, uncertainty = 0.0005},
+]
+enzyme_measurements = [
+  # Glycolysis
+  {target_id='GLCt1', value=0.001, uncertainty=0.05},
+  {target_id='HEX1', value=0.000062, uncertainty=0.1},
+  {target_id='PGI', value=0.000138, uncertainty=0.05},
+  {target_id='PFK', value=0.000085, uncertainty=0.05},
+  {target_id='FBA', value=0.00134, uncertainty=0.05},
+  {target_id='TPI', value=0.000295, uncertainty=0.05},
+  {target_id='GAPD', value=0.0042, uncertainty=0.05},
+  {target_id='PGK', value=0.000258, uncertainty=0.05},
+
+  # PPP
+  {target_id='G6PDH2r', value=0.00002, uncertainty=0.05},
+  {target_id='PGL', value=0.000030, uncertainty=0.05},
+  {target_id='GND', value=0.000013, uncertainty=0.05},
+  {target_id='RPI', value=0.00005, uncertainty=0.05},
+  {target_id='RPE', value=0.00003, uncertainty=0.05},
+  {target_id='TALA', value=0.000144, uncertainty=0.05},
+  {target_id='TKT1', value=0.000455, uncertainty=0.05},
+  {target_id='TKT2', value=0.000455, uncertainty=0.05},
+]
+
+[[experiments]]
+id = 'condition_2'
+metadata = "Condition 2"
+metabolite_measurements = [
+  { target_id = 'glc-D_c', value = 1.06, uncertainty = 0.05},
+  { target_id = 'g6p_c', value = 0.16, uncertainty = 0.05},
+  { target_id = 'f6p_c', value = 0.1, uncertainty = 2},
+  { target_id = 'fdp_c', value = 0.025, uncertainty = 0.05},
+  { target_id = 'g3p_c', value = 0.034, uncertainty = 0.05},
+  { target_id = '13dpg_c', value = 0.02, uncertainty = 2},
+  { target_id = 'ru5p-D_c', value = 0.01, uncertainty = 2},
+  { target_id = 'xu5p-D_c', value = 0.044, uncertainty = 2},
+  { target_id = '6pgl_c', value = 1.66, uncertainty = 2},
+  { target_id = '6pgc_c', value = 0.16, uncertainty = 2},
+  { target_id = 'e4p_c', value = 0.004, uncertainty = 1},
+  { target_id = 's7p_c', value = 0.017, uncertainty = 0.05},
+]
+reaction_measurements = [
+  { target_id = 'PFK', value = 1.45, uncertainty = 0.1},
+  { target_id = 'G6PDH2r', value = 0.0012, uncertainty = 0.0005},
+]
+enzyme_measurements = [
+  # Glycolysis
+  {target_id='GLCt1', value=0.001, uncertainty=0.05},
+  {target_id='HEX1', value=0.000062, uncertainty=0.1},
+  {target_id='PGI', value=0.000138, uncertainty=0.05},
+  {target_id='PFK', value=0.000085, uncertainty=0.05},
+  {target_id='FBA', value=0.00134, uncertainty=0.05},
+  {target_id='TPI', value=0.000295, uncertainty=0.05},
+  {target_id='GAPD', value=0.0042, uncertainty=0.05},
+  {target_id='PGK', value=0.000258, uncertainty=0.05},
+
+  # PPP
+  {target_id='G6PDH2r', value=0.00002, uncertainty=0.05},
+  {target_id='PGL', value=0.000030, uncertainty=0.05},
+  {target_id='GND', value=0.000013, uncertainty=0.05},
+  {target_id='RPI', value=0.00005, uncertainty=0.05},
+  {target_id='RPE', value=0.00003, uncertainty=0.05},
+  {target_id='TALA', value=0.000144, uncertainty=0.05},
+  {target_id='TKT1', value=0.000455, uncertainty=0.05},
+  {target_id='TKT2', value=0.000455, uncertainty=0.05},
+]
+
+###### Priors ######
+[priors.kinetic_parameters]
+GLCt1 = [
+  { target_id = 'Kcat1', location = 3.35, scale = 0.1},
+  { target_id = 'Ka', location = 0.0009, scale = 0.1},
+  { target_id = 'Kp', location = 0.0009, scale = 0.1},
+]
+HEX1 = [
+  { target_id = 'Kcat1', location = 63.2, scale = 0.1},
+  { target_id = 'Ka', location = 0.0002, scale = 0.1},
+  { target_id = 'Kb', location = 0.000195, scale = 0.1},
+  { target_id = 'Kp', location = 0.0030, scale = 0.1},
+  { target_id = 'Kq', location = 0.00023, scale = 0.1},
+]
+PGI = [
+  { target_id = 'Kcat1', location = 487, scale = 0.1},
+  { target_id = 'Ka', location = 0.00103, scale = 0.1},
+  { target_id = 'Kp', location = 0.00031, scale = 0.1},
+]
+PFK = [
+  { target_id = 'Kcat1', location = 209, scale = 0.1},
+  { target_id = 'Ka', location = 0.0001, scale = 0.1},
+  { target_id = 'Kb', location = 0.00071, scale = 0.1},
+  { target_id = 'Kp', location = 0.000111, scale = 0.1},
+  { target_id = 'Kq', location = 0.001, scale = 0.1},
+]
+FBA = [
+  { target_id = 'Kcat1', location = 4.14, scale = 0.1},
+  { target_id = 'Ka', location = 0.00045, scale = 0.1},
+  { target_id = 'Kp', location = 0.002, scale = 0.1},
+  { target_id = 'Kq', location = 0.0024, scale = 0.1},
+]
+TPI = [
+  { target_id = 'Kcat1', location = 564, scale = 0.1},
+  { target_id = 'Ka', location = 0.006454, scale = 0.1},
+  { target_id = 'Kp', location = 0.00525, scale = 0.1},
+]
+GAPD = [
+  { target_id = 'Kcat1', location = 19, scale = 0.1},
+  { target_id = 'Ka', location = 0.000423, scale = 0.1},
+  { target_id = 'Kb', location = 0.00009, scale = 0.1},
+  { target_id = 'Kc', location = 0.000001, scale = 0.1},
+  { target_id = 'Kp', location = 0.00006, scale = 0.1},
+  { target_id = 'Kq', location = 0.000909, scale = 0.1},
+]
+PGK = [
+  { target_id = 'Kcat1', location = 58.6, scale = 0.1},
+  { target_id = 'Ka', location = 0.0002, scale = 0.1},
+  { target_id = 'Kb', location = 0.000003, scale = 0.1},
+  { target_id = 'Kp', location = 0.00458, scale = 0.1},
+  { target_id = 'Kq', location = 0.00199, scale = 0.1},
+]
+G6PDH2r = [
+  { target_id = 'Kcat1', location = 189, scale = 0.1},
+  { target_id = 'Ka', location = 0.000045, scale = 0.1},
+  { target_id = 'Kb', location = 0.000045, scale = 0.1},
+  { target_id = 'Kp', location = 0.00001, scale = 0.1},
+  { target_id = 'Kq', location = 0.000017, scale = 0.1},
+]
+PGL = [
+  { target_id = 'Kcat1', location = 4.3, scale = 0.1},
+  { target_id = 'Ka', location = 0.00083, scale = 0.1},
+  { target_id = 'Kp', location = 0.0005, scale = 0.1},
+]
+GND = [
+  { target_id = 'Kcat1', location = 28, scale = 0.1},
+  { target_id = 'Ka', location = 0.000062, scale = 0.1},
+  { target_id = 'Kb', location = 0.000094, scale = 0.1},
+  { target_id = 'Kp', location = 0.0001, scale = 0.1},
+  { target_id = 'Kq', location = 0.000055, scale = 0.1},
+  { target_id = 'Kr', location = 0.000001, scale = 2},
+]
+RPI = [
+  { target_id = 'Kcat1', location = 335, scale = 0.1},
+  { target_id = 'Ka', location = 0.00247, scale = 0.1},
+  { target_id = 'Kp', location = 0.0057, scale = 0.1},
+]
+RPE = [
+  { target_id = 'Kcat1', location = 4020, scale = 0.1},
+  { target_id = 'Ka', location = 0.00597, scale = 0.1},
+  { target_id = 'Kp', location = 0.0077, scale = 0.1},
+  ]
+TKT1 = [
+  { target_id = 'Kcat1', location = 40.5, scale = 0.1},
+  { target_id = 'Ka', location = 0.00067, scale = 0.1},
+  { target_id = 'Kb', location = 0.000235, scale = 0.1},
+  { target_id = 'Kp', location = 0.0001, scale = 0.1},
+  { target_id = 'Kq', location = 0.00015, scale = 0.1},
+]
+TKT2 = [
+  { target_id = 'Kcat1', location = 47.1, scale = 0.1},
+  { target_id = 'Ka', location = 0.000946, scale = 0.1},
+  { target_id = 'Kb', location = 0.00067, scale = 0.1},
+  { target_id = 'Kp', location = 0.0011, scale = 0.1},
+  { target_id = 'Kq', location = 0.0001, scale = 0.1},
+]
+TALA = [
+  { target_id = 'Kcat1', location = 0.69, scale = 0.1},
+  { target_id = 'Ka', location = 0.000786, scale = 0.1},
+  { target_id = 'Kb', location = 0.000272, scale = 0.1},
+  { target_id = 'Kp', location = 0.000362, scale = 0.1},
+  { target_id = 'Kq', location = 0.00144, scale = 0.1},
+]
+
+[priors.thermodynamic_parameters]
+formation_energies = [
+  { target_id = 'glc-D', location = -446.8, scale = 1.3 },
+  { target_id = 'atp', location = -2313.0, scale = 3.0 },
+  { target_id = 'adp', location = -1440.8, scale = 2.4 },
+  { target_id = 'nad', location = -1222.9, scale = 12.4 },
+  { target_id = 'nadh', location = -1158.7, scale = 12.4 },
+  { target_id = 'dhap', location = -1111.9, scale = 1.1 },
+  { target_id = '3pg', location = -1365.2, scale = 1.5 },
+  { target_id = 'g6p', location = -1336.3, scale = 1.3 },
+  { target_id = 'f6p', location = -1333.8, scale = 1.3 },
+  { target_id = 'fdp', location = -2220.9, scale = 2.1 },
+  { target_id = 'g3p', location = -1106.4, scale = 1.3 },
+  { target_id = '13dpg', location = -2219.0, scale = 2.1 },
+  { target_id = 'pi', location = -1073.3, scale = 1.5 },
+  { target_id = 'co2', location = -386, scale = 5.8 },
+  { target_id = '6pgl', location = -1386.6, scale = 2.9 },
+  { target_id = '6pgc', location = -1565.2, scale = 2.5 },
+  { target_id = 'r5p', location = -1235.1, scale = 2.0 },
+  { target_id = 'ru5p-D', location = -1233.1, scale = 1.9 },
+  { target_id = 'xu5p-D', location = -1236.5, scale = 2.4 },
+  { target_id = 's7p', location = -1386.1, scale = 3.7 },
+  { target_id = 'e4p', location = -1159.4, scale = 3.4 },
+  { target_id = 'nadp', location = -2089.8, scale = 12.7 },
+  { target_id = 'nadph', location = -2024.7, scale = 12.7 },
+]
+
+[priors.unbalanced_metabolites]
+condition_1 = [
+]
+[priors.enzymes]
+condition_1 = [
+  # Glycolysis
+]

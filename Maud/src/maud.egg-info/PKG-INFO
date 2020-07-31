@@ -1,0 +1,106 @@
+Metadata-Version: 2.1
+Name: maud
+Version: 0.2.1+213.g3fab722
+Summary: Bayesian statistical models of metabolic networks
+Home-page: https://github.com/biosustain/Maud
+Author: Novo Nordisk Foundation Center for Biosustainability, Technical University of Denmark
+Author-email: tedgro@dtu.dk
+License: GNU General Public License version 3
+Download-URL: https://pypi.org/project/maud/
+Description: ====
+        Maud
+        ====
+        
+        .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+           :target: https://www.gnu.org/licenses/gpl-3.0
+           :alt: GNU General Public License 3.0
+        
+        .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+           :target: https://github.com/ambv/black
+           :alt: Black
+        
+        .. image:: https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg
+           :target: https://www.contributor-covenant.org/
+           :alt: Contributor Covenant Version 1.4
+        
+        .. image:: https://readthedocs.org/projects/maud-metabolic-models/badge/?version=latest
+           :target: https://maud-metabolic-models.readthedocs.io/en/latest/?badge=latest
+           :alt: Documentation Status
+        
+        Maud is a work-in-progress application that fits Bayesian statistical models of
+        metabolic networks using `Python <https://www.python.org/>`_ and `Stan
+        <https://mc-stan.org>`_.
+        
+        Maud aims to take into account allosteric effects, ensure that the laws of
+        thermodynamics are obeyed and to synthesise information from both steady state
+        experiments and the existing literature.
+        
+        Install
+        =======
+        First create a fresh Python 3.7 virtual environment and then activate it:
+        
+        .. code-block:: console
+        
+            sudo pip3.7 install virtualenv     # if virtualenv isn't installed already
+            python3.7 -m virtualenv maud_venv  # choose any name you like!
+            source maud_venv/bin/activate
+        
+        To install the latest Maud and its python dependencies to your new virtual
+        environment from the latest master branch, run this command:
+        
+        .. code-block:: console
+        
+            pip install https://github.com/biosustain/Maud/archive/master.zip
+        
+        Cmdstanpy depends on `cmdstan <https://github.com/stan-dev/cmdstan>`_, which
+        needs to be installed too. Fortunately, cmdstanpy comes with a command line
+        script that installs cmdstan, so this step is pretty simple:
+        
+        .. code-block:: console
+        
+            install_cmdstan
+        
+        
+        Usage
+        =====
+        To run the simple linear model, use the following command:
+        
+        .. code-block:: console
+        
+            maud sample
+        
+        This will use the data file at `data/in/linar.toml
+        <https://github.com/biosustain/Maud/blob/master/data/in/linear.toml>`_ to
+        create a Stan program called :code:`inference_model_linear.stan` in your
+        working directory, compile it into a C++ Stan model, draw samples from the
+        resulting posterior and store them in csv files starting with
+        :code:`model_output_linear`.
+        
+        The `sample` command can be configured in a few ways - to check out all the
+        options try running
+        
+        .. code-block:: console
+        
+            maud sample --help
+        
+        
+        Copyright
+        =========
+        
+        * Copyright (c) 2019, Novo Nordisk Foundation Center for Biosustainability, Technical University of Denmark.
+        * Free software distributed under the `GNU General Public License 3.0 <https://www.gnu.org/licenses/>`_
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License version 3
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Python: >=3.7
+Provides-Extra: development
