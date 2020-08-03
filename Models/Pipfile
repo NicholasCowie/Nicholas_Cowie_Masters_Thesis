@@ -20,4 +20,4 @@ scprep = "*"
 scikit-misc = "*"
 
 [requires]
-python_version = "3.7"
+
