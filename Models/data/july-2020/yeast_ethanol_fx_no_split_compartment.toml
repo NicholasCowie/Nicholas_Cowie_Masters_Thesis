@@ -1,0 +1,868 @@
+  ###### Kinetic model ######
+[[compartments]]
+id = 'c'
+name = 'cytosol'
+volume = 1
+
+[[metabolites]]
+id = 'atp'
+name = 'ATP'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'adp'
+name = 'ADP'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'nad'
+name = 'NAD'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'nadh'
+name = 'NADH'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'nadp'
+name = 'NADP(+)'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'nadph'
+name = 'NADPH'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = '3pg'
+name = '3-phosphoglycerate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = '2pg'
+name = '2-phosphoglycerate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'g6p'
+name = 'D-glucose 6-phosphate'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = 'f6p'
+name = 'D-fructose 6-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'fdp'
+name = 'D-fructose 1,6-bisphosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'g3p'
+name = 'glyceraldehyde 3-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = '13dpg'
+name = '1,3-bisphospho-D-glycerate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'dhap'
+name = 'dihydroxyacetone phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'pep'
+name = 'phosphoenolpyruvate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'pyr'
+name = 'pyruvate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'pi'
+name = 'phosphate'
+balanced = false
+compartment = 'c'
+
+[[metabolites]]
+id = '6pgl'
+name = '6-O-phosphono-D-glucono-1,5-lactone'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = '6pgc'
+name = '6-phospho-D-gluconate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'ru5p-D'
+name = 'D-Ribulose 5-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'r5p'
+name = 'ribose-5-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'e4p'
+name = 'D-erythrose 4-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 'xu5p-D'
+name = 'D-Xylulose 5-phosphate'
+balanced = true
+compartment = 'c'
+
+[[metabolites]]
+id = 's7p'
+name = 'sedoheptulose 7-phosphate'
+balanced = true
+compartment = 'c'
+
+# [[metabolites]]
+# id = 'acald'
+# name = 'acetaldehyde'
+# balanced = true
+# compartment = 'c'
+
+# [[metabolites]]
+# id = 'etoh'
+# name = 'ethanol'
+# balanced = false
+# compartment = 'c'
+
+# Glycolysis
+[[reactions]]
+id = 'PGI'
+name = 'PGI'
+stoichiometry = { g6p_c = -1, f6p_c = 1}
+[[reactions.enzymes]]
+id = 'PGI'
+name = 'PGI'
+gene_id = 'YBR196C'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'PFK'
+name = 'PFK'
+stoichiometry = { f6p_c = -1, atp_c = -1, fdp_c = 1, adp_c = 1 }
+[[reactions.enzymes]]
+id = 'PFK'
+name = 'PFK'
+gene_id = ['YGR240C','YMR205C']
+mechanism = "modular_rate_law"
+subunits = 8
+allosteric_activators = ['fdp_c'] 
+allosteric_inhibitors = ['atp_c']
+
+[[reactions]]
+id = 'FBA'
+name = 'FBA'
+stoichiometry = { fdp_c = -1, dhap_c = 1, g3p_c = 1 }
+[[reactions.enzymes]]
+id = 'FBA'
+name = 'FBA'
+gene_id = 'YKL060C'
+mechanism = "modular_rate_law"
+competitive_inhibitors = ['g3p_c']
+
+[[reactions]]
+id = 'TPI'
+name = 'TPI'
+stoichiometry = { dhap_c = -1, g3p_c = 1 }
+[[reactions.enzymes]]
+id = 'TPI'
+name = 'TPI'
+gene_id = 'YDR050C'
+mechanism = "modular_rate_law"
+competitive_inhibitors = ['g3p_c']
+
+[[reactions]]
+id = 'GAPD'
+name = 'GAPD'
+stoichiometry = { g3p_c = -1, nad_c = -1, pi_c = -1, nadh_c = 1, 13dpg_c = 1 }
+[[reactions.enzymes]]
+id = 'TDH1'
+name = 'TDH1'
+gene_id = 'YJL052W'
+mechanism = "modular_rate_law"
+[[reactions.enzymes]]
+id = 'TDH3'
+name = 'TDH3'
+gene_id = 'YGR192C'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'PGK'
+name = 'PGK'
+stoichiometry = { adp_c = -1, 13dpg_c = -1, 3pg_c = 1, atp_c = 1}
+[[reactions.enzymes]]
+id = 'PGK'
+name = 'PGK'
+gene_id = 'YCR012W'
+mechanism = "modular_rate_law"
+subunits=2
+allosteric_activators = ['adp_c']
+
+[[reactions]]
+id = 'GPM'
+name = 'GPM'
+stoichiometry = { 3pg_c = -1, 2pg_c = 1}
+[[reactions.enzymes]]
+id = 'GPM1'
+name = 'GPM1, tetrameric'
+gene_id = 'YKL152C'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'ENO'
+name = 'Enolase'
+stoichiometry = { 2pg_c = -1, pep_c = 1}
+[[reactions.enzymes]]
+id = 'ENO1'
+name = 'ENO1'
+gene_id = 'YGR254W'
+mechanism = "modular_rate_law"
+[[reactions.enzymes]]
+id = 'ENO2'
+name = 'ENO2'
+gene_id = 'YHR174W'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'PYK'
+name = 'Pyruvate Kinase'
+stoichiometry = { pep_c = -1, adp_c = -1, atp_c = 1, pyr_c = 1}
+[[reactions.enzymes]]
+id = 'CDC19'
+name = 'CDC19, tetrameric'
+gene_id = 'YAL038W'
+subunits = 4
+mechanism = "modular_rate_law"
+allosteric_activators = ['fdp_c'] # Rizzi
+
+# Pentose Phosphate Pathway
+[[reactions]]
+id = 'G6PDH2r'
+name = 'G6PDH2r'
+stoichiometry = { nadp_c = -1, g6p_c = -1, 6pgl_c = 1, nadph_c = 1}
+[[reactions.enzymes]]
+id = 'ZWF1'
+name = 'ZWF1'
+gene_id = 'YNL241C'
+mechanism = "modular_rate_law"
+
+
+[[reactions]]
+id = 'PGL'
+name = 'PGL'
+stoichiometry = { 6pgl_c = -1, 6pgc_c = 1 }
+[[reactions.enzymes]]
+id = 'SOL3'
+name = 'SOL3'
+gene_id = 'YHR163W'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'GND'
+name = 'GND'
+stoichiometry = { 6pgc_c = -1, nadp_c = -1, nadph_c = 1, ru5p-D_c = 1} # Need to account for CO2
+[[reactions.enzymes]]
+id = 'GND1'
+name = 'GND1'
+gene_id = 'YHR183W'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'RPE'
+name = 'RPE'
+stoichiometry = { ru5p-D_c = -1, xu5p-D_c = 1 }
+[[reactions.enzymes]]
+id = 'RPE1'
+name = 'RPE1'
+gene_id = 'YJL121C'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'RKI'
+name = 'RKI'
+stoichiometry = { ru5p-D_c = -1, r5p_c = 1 }
+[[reactions.enzymes]]
+id = 'RKI1'
+name = 'RKI1'
+gene_id = 'YOR095C'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'TKL1'
+name = 'TKL1'
+stoichiometry = { xu5p-D_c = -1, r5p_c = -1, s7p_c = 1, g3p_c = 1 }
+[[reactions.enzymes]]
+id = 'TKL1'
+name = 'TKL1'
+gene_id = 'YPR074C'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'TKL2'
+name = 'TKL2'
+stoichiometry = { e4p_c = -1, xu5p-D_c = -1, f6p_c = 1, g3p_c = 1 }
+[[reactions.enzymes]]
+id = 'TKL2'
+name = 'TKL2'
+gene_id = 'YBR117C'
+mechanism = "modular_rate_law"
+
+[[reactions]]
+id = 'TAL'
+name = 'TAL'
+stoichiometry = { g3p_c = -1, s7p_c = -1, f6p_c = 1, e4p_c = 1 }
+[[reactions.enzymes]]
+id = 'TAL1'
+name = 'TAL1'
+gene_id = 'YLR354C'
+mechanism = "modular_rate_law"
+
+# ## Ethanol Metabolisms
+
+# [[reactions]]
+# id = 'PDC'
+# name = 'Pyruvate Decarboxylase'
+# stoichiometry = { pyr_c = -1, acald_c = 1}
+# [[reactions.enzymes]]
+# id = 'PDC1'
+# name = 'PDC1'
+# gene_id = 'YLR044C'
+# mechanism = "modular_rate_law"
+
+# [[reactions]]
+# id = 'ADH'
+# name = 'Alcohol Dehydrogenase'
+# stoichiometry = { acald_c = -1, nadh_c = -1, nad_c = 1, etoh_c = 1}
+# [[reactions.enzymes]]
+# id = 'ADH1'
+# name = 'ADH1'
+# gene_id = 'YOL086C'
+# mechanism = "modular_rate_law" # Smallbone assumes an ordered mechanism with strong inhibiition from nadh and nad
+
+[[reactions]]
+id = 'pyr_c_EX'
+name = 'cytosolic pyruvate drain'
+stoichiometry = { pyr_c = -1}
+[[reactions.enzymes]]
+id = 'pyr_c_EX'
+name = 'pyr_c_EX'
+mechanism = "irr_mass_action" # Smallbone assumes an ordered mechanism with strong inhibiition from nadh and nad
+
+[[reactions]]
+id = 'dhap_c_EX'
+name = 'cytosolic dhap drain'
+stoichiometry = { dhap_c = -1}
+[[reactions.enzymes]]
+id = 'dhap_c_EX'
+name = 'dhap_c_EX'
+mechanism = "irr_mass_action" # Smallbone assumes an ordered mechanism with strong inhibiition from nadh and nad
+
+[[reactions]]
+id = 'r5p_c_EX'
+name = 'cytosolic r5p drain'
+metadata = 'drains due to NTP, His, and Trp'
+stoichiometry = { r5p_c = -1}
+[[reactions.enzymes]]
+id = 'r5p_c_EX'
+name = 'r5p_c_EX'
+mechanism = "irr_mass_action" # Smallbone assumes an ordered mechanism with strong inhibiition from nadh and nad
+
+
+###### Priors ######
+[priors.kinetic_parameters]
+PGI = [
+  { target_id = 'Kcat1', location = 487, scale = 0.1},
+  { target_id = 'Ka', location = 1.03, scale = 0.1},
+  { target_id = 'Kp', location = 0.31, scale = 0.1},
+]
+PFK = [
+  { target_id = 'Kcat1', location = 209, scale = 0.1},
+  { target_id = 'Ka', location = 0.1, scale = 0.1},
+  { target_id = 'Kb', location = 0.71, scale = 0.1},
+  { target_id = 'Kp', location = 0.111, scale = 0.1},
+  { target_id = 'Kq', location = 1, scale = 0.1},
+  { target_id = 'dissociation_constant_t', metabolite = 'atp_c', location= 0.71, scale = 3},
+  { target_id = 'dissociation_constant_r', metabolite = 'fdp_c', location = 0.111, scale = 3},
+  { target_id = 'transfer_constant', location = 0.66, scale = 3},
+
+]
+FBA = [
+  { target_id = 'Kcat1', location = 4.14, scale = 0.1},
+  { target_id = 'Ka', location = 0.45, scale = 0.1},
+  { target_id = 'Kp', location = 2, scale = 0.1},
+  { target_id = 'Kq', location = 2.4, scale = 0.1},
+  { target_id = 'inhibition_constant', metabolite = 'g3p_c', location= 10, scale = 3},
+]
+TPI = [
+  { target_id = 'Kcat1', location = 564, scale = 0.1},
+  { target_id = 'Ka', location = 6.454, scale = 0.1},
+  { target_id = 'Kp', location = 5.25, scale = 0.11},
+  { target_id = 'inhibition_constant', metabolite = 'g3p_c', location= 35.1, scale = 3},
+]
+TDH1 = [
+  { target_id = 'Kcat1', location = 19.1, scale = 0.1},
+  { target_id = 'Ka', location = 0.495, scale = 1},
+  { target_id = 'Kb', location = 0.09, scale = 1},
+  { target_id = 'Kc', location = 1.5, scale = 1}, # BRENDA
+  { target_id = 'Kp', location = 0.06, scale = 1},
+  { target_id = 'Kq', location = 0.0098, scale = 1},
+]
+TDH3 = [
+  { target_id = 'Kcat1', location = 18.16, scale = 0.1},
+  { target_id = 'Ka', location = 0.423, scale = 1},
+  { target_id = 'Kb', location = 0.09, scale = 1},
+  { target_id = 'Kc', location = 1.5, scale = 1}, # BRENDA
+  { target_id = 'Kp', location = 0.06, scale = 1},
+  { target_id = 'Kq', location = 0.909, scale = 1},
+]
+PGK = [
+  { target_id = 'Kcat1', location = 58.6, scale = 0.1},
+  { target_id = 'Ka', location = 0.2, scale = 1},
+  { target_id = 'Kb', location = 0.003, scale = 1},
+  { target_id = 'Kp', location = 4.58, scale = 1},
+  { target_id = 'Kq', location = 1.99, scale = 1},
+  { target_id = 'dissociation_constant_r', metabolite = 'adp_c', location = 0.2, scale = 3}, # value given by smallbone
+  { target_id = 'transfer_constant', location = 1.0, scale = 2}, # Uncertain about L0 value
+]
+GPM1 = [
+  { target_id = 'Kcat1', location = 400, scale = 0.1},
+  { target_id = 'Ka', location = 1.2, scale = 1},
+  { target_id = 'Kp', location = 1.41, scale = 1}
+]
+ENO1 = [
+  { target_id = 'Kcat1', location = 7.6, scale = 0.1},
+  { target_id = 'Ka', location = 0.043, scale = 1},
+  { target_id = 'Kp', location = 0.5, scale = 1}
+]
+ENO2 = [
+  { target_id = 'Kcat1', location = 19.87, scale = 0.1},
+  { target_id = 'Ka', location = 0.104, scale = 1},
+  { target_id = 'Kp', location = 0.5, scale = 1}
+]
+CDC19 = [
+  { target_id = 'Kcat1', location = 20.146, scale = 0.1},
+  { target_id = 'Ka', location = 0.281, scale = 1},
+  { target_id = 'Kb', location = 0.243, scale = 1},
+  { target_id = 'Kp', location = 1.5, scale = 1},
+  { target_id = 'Kq', location = 21, scale = 1},
+  { target_id = 'dissociation_constant_r', metabolite = 'fdp_c', location = 0.2, scale = 1}, # value given by smallbone/Xu Y., 2012 goes into this.
+  { target_id = 'transfer_constant', location = 100.0, scale = 1}, # Uncertain about L0 value
+]
+
+## Pentose Phosphate Pathway
+ZWF1 = [
+  { target_id = 'Kcat1', location = 189, scale = 0.1},
+  { target_id = 'Ka', location = 0.045, scale = 1},
+  { target_id = 'Kb', location = 0.045, scale = 1},
+  { target_id = 'Kp', location = 0.01, scale = 1},
+  { target_id = 'Kq', location = 0.017, scale = 1},
+]
+SOL3 = [
+  { target_id = 'Kcat1', location = 4.3, scale = 0.1},
+  { target_id = 'Ka', location = 0.83, scale = 0.1},
+  { target_id = 'Kp', location = 0.5, scale = 0.1},
+]
+
+GND1 = [
+  { target_id = 'Kcat1', location = 28, scale = 0.1},
+  { target_id = 'Ka', location = 0.062, scale = 1},
+  { target_id = 'Kb', location = 0.094, scale = 1},
+  { target_id = 'Kp', location = 0.055, scale = 1},
+  { target_id = 'Kq', location = 0.1, scale = 1},
+]
+
+RPE1 = [
+  { target_id = 'Kcat1', location = 4020, scale = 0.1},
+  { target_id = 'Ka', location = 5.97, scale = 0.1},
+  { target_id = 'Kp', location = 7.7, scale = 0.1},
+]
+
+RKI1 = [
+  { target_id = 'Kcat1', location = 335, scale = 0.1},
+  { target_id = 'Ka', location = 2.47, scale = 0.1},
+  { target_id = 'Kp', location = 5.7, scale = 0.1},
+]
+
+TKL1 = [
+  { target_id = 'Kcat1', location = 40.5, scale = 0.1},
+  { target_id = 'Ka', location = 0.67, scale = 1},
+  { target_id = 'Kb', location = 0.235, scale = 1},
+  { target_id = 'Kp', location = 0.15, scale = 1},
+  { target_id = 'Kq', location = 0.1, scale = 1},
+]
+
+TKL2 = [
+  { target_id = 'Kcat1', location = 47.1, scale = 0.1},
+  { target_id = 'Ka', location = 0.946, scale = 1},
+  { target_id = 'Kb', location = 0.67, scale = 1},
+  { target_id = 'Kp', location = 1.1, scale = 1},
+  { target_id = 'Kq', location = 0.1, scale = 1},
+]
+
+TAL1 = [
+  { target_id = 'Kcat1', location = 0.694, scale = 0.1},
+  { target_id = 'Ka', location = 0.272, scale = 1},
+  { target_id = 'Kb', location = 0.786, scale = 1},
+  { target_id = 'Kp', location = 1.44, scale = 1},
+  { target_id = 'Kq', location = 0.362, scale = 1},
+]
+
+# PDC1 = [
+#   { target_id = 'Kcat1', location = 12.13, scale = 0.1},
+#   { target_id = 'Ka', location = 8.5, scale = 0.1}, # Mechanism Matches
+#   { target_id = 'Kp', location = 0.1, scale = 3}, # Unknown
+# ]
+
+# ADH1 = [
+#   { target_id = 'Kcat1', location = 176, scale = 0.1},
+#   { target_id = 'Ka', location = 0.4622, scale = 1},
+#   { target_id = 'Kb', location = 0.11, scale = 1},
+#   { target_id = 'Kp', location = 0.17, scale = 1},
+#   { target_id = 'Kq', location = 17, scale = 1},
+# ]
+
+pyr_c_EX = [
+  { target_id = 'V1', location = 1, scale = 0.1},
+]
+
+dhap_c_EX = [
+  { target_id = 'V1', location = 1, scale = 0.1},
+]
+
+r5p_c_EX = [
+  { target_id = 'V1', location = 1, scale = 0.1},
+]
+
+[priors.thermodynamic_parameters] # All in molar formation energies
+formation_energies = [
+  { target_id = 'atp', location = -254.4139865143561, scale = 2.315721073437092 }, 
+  { target_id = 'adp', location = 148.0251405118879, scale = 1.5673100927088257 }, 
+  { target_id = 'nad', location = 996.5923710522511, scale = 43.166268640758595 }, 
+  { target_id = 'nadh', location = 1060.4301721672928, scale = 43.21272772149747 }, 
+  { target_id = 'nadp', location = 580.9761022131729, scale = 45.1128511100652 }, 
+  { target_id = 'nadph', location = 644.7932549516408, scale = 45.07192957313388 }, 
+  { target_id = '3pg', location = -252.02667298277697, scale = 1.4769579319877952 }, 
+  { target_id = '2pg', location = -245.25295917766425, scale = 0.6742568674382623 }, 
+  { target_id = 'g6p', location = 95.93633707859794, scale = 0.43468450430482897 }, 
+  { target_id = 'f6p', location = 98.46547658122404, scale = 0.4649302077930605 }, 
+  { target_id = 'fdp', location = -320.11285190832814, scale = 1.2199713226040687 }, 
+  { target_id = 'g3p', location = -146.59262711894598, scale = 0.4634571969887073 }, 
+  { target_id = '13dpg', location = -633.3727975453719, scale = 1.194081715949076 }, 
+  { target_id = 'dhap', location = -152.0518905210106, scale = 0.3287751064171035 }, 
+  { target_id = 'pep', location = -249.33101782148913, scale = 0.7039628107753174 }, 
+  { target_id = 'pyr', location = 125.81490343921172, scale = 0.6001842888387141 }, 
+  { target_id = 'pi', location = -428.21047005929006, scale = 0.5847418058008593 }, 
+  { target_id = '6pgl', location = 28.097731867729635, scale = 2.2501601975747216 }, 
+  { target_id = '6pgc', location = 5.894390017820115, scale = 1.514476263025884 }, 
+  { target_id = 'ru5p-D', location = 24.531399350853235, scale = 0.9744817336478394 }, 
+  { target_id = 'r5p', location = 22.57981386093934, scale = 1.0954588615858158 }, 
+  { target_id = 'e4p', location = -59.243868595595586, scale = 3.1004408251178113 }, 
+  { target_id = 'xu5p-D', location = 21.151251932056766, scale = 1.5408298224456771 }, 
+  { target_id = 's7p', location = 186.4191058284464, scale = 3.6905628143776967 }, 
+  #{ target_id = 'acald', location = 179.65355885388612, scale = 1.566037702831757 }, 
+  #{ target_id = 'etoh', location = 222.42607792248958, scale = 2.068102668411707 }
+]
+  
+[priors.unbalanced_metabolites]
+condition_1 = [
+]
+[priors.enzymes]
+condition_1 = [
+  # Glycolysis
+]
+
+# Inserting the coefficient of variation for drains
+# All of the drain enzyms are solved for using E = V/[A]
+[[experiments]]
+id = "C0.05"
+metadata = "Condition C0.05"
+metabolite_measurements = [
+    { target_id = "pi_c", value = 6.14614927888075, uncertainty = 0.37812322875490395 },
+    { target_id = "6pgc_c", value = 0.302198664039414, uncertainty = 0.10267554990352001 },
+    { target_id = "atp_c", value = 0.9857240412936722, uncertainty = 0.232443697835851 },
+    { target_id = "adp_c", value = 0.0973741174327021, uncertainty = 0.496586014161745 },
+    { target_id = "g6p_c", value = 0.69459984936143, uncertainty = 0.0761630859075539 },
+    { target_id = "fdp_c", value = 0.06782016738616421, uncertainty = 0.277045637389549 },
+    { target_id = "dhap_c", value = 0.0968352514666346, uncertainty = 0.19141311907972697 },
+    { target_id = "nadp_c", value = 0.00107908495357835, uncertainty = 0.26020942584990403 },
+    { target_id = "nad_c", value = 1.1715278046257, uncertainty = 0.47546391814832106 },
+    { target_id = "nadh_c", value = 0.0039334539958002296, uncertainty = 0.106020633049341 },
+    { target_id = "pyr_c", value = 1.8155414286811398, uncertainty = 0.514853858608728 },
+    { target_id = "s7p_c", value = 0.625909573478425, uncertainty = 0.158406416049498 },
+    { target_id = "3pg_c", value = 0.978858093776737, uncertainty = 0.705305818659629 },
+    { target_id = "r5p_c", value = 0.0655164312505717, uncertainty = 0.12375417451072801 },
+]
+
+reaction_measurements = [
+    # { target_id = "ADH", value = 0.00577, uncertainty = 0.00468 },
+    { target_id = "pyr_c_EX", value = 0.6431, uncertainty =  0.00775 },
+    { target_id = "dhap_c_EX", value = 0.015573525, uncertainty = 0.0023 },
+    { target_id = "r5p_c_EX", value = 0.00472, uncertainty = 0.00163
+
+    },
+]
+
+enzyme_measurements = [
+    { target_id = "CDC19", value = 0.00958388676102881, uncertainty = 0.6985699678629192 },
+    { target_id = "TKL2", value = 0.00013949640145122534, uncertainty = 0.9622889378975528 },
+    { target_id = "PGI", value = 0.00836398212931877, uncertainty = 0.5291502622129182 },
+    { target_id = "PGK", value = 0.08454178372963128, uncertainty = 0.7874007874011811 },
+    { target_id = "TPI", value = 0.06017996031623829, uncertainty = 0.7099295739719539 },
+    { target_id = "TDH3", value = 0.052723794971674995, uncertainty = 0.6811754546370561 },
+    { target_id = "PFK", value = 0.004466230004185903, uncertainty = 0.5079370039680118 },
+    { target_id = "ENO1", value = 0.037201339708428705, uncertainty = 0.91323600454647 },
+    { target_id = "SOL3", value = 0.0009635035027044423, uncertainty = 0.7238784428341544 },
+    { target_id = "ENO2", value = 0.043003191249103866, uncertainty = 0.8111719916269299 },
+    { target_id = "TDH1", value = 0.0007634226591707166, uncertainty = 0.8354639429682169 },
+    { target_id = "RPE1", value = 0.0006289658810063855, uncertainty = 0.7348469228349535 },
+    { target_id = "FBA", value = 0.04027235940427313, uncertainty = 0.7681145747868608 },
+    { target_id = "GPM1", value = 0.03602602107046955, uncertainty = 0.8567379996241558 },
+    # { target_id = "PDC1", value = 0.022136812778956294, uncertainty = 0.7211102550927979 },
+    { target_id = "TAL1", value = 0.012145641290910066, uncertainty = 0.6196773353931867 },
+    { target_id = "ZWF1", value = 0.001533375921243368, uncertainty = 0.6826419266350405 },
+    { target_id = "TKL1", value = 0.00290034110714912, uncertainty = 0.5 },
+    { target_id = "pyr_c_EX", value = 0.00553125, uncertainty = 1 },
+    { target_id = "dhap_c_EX", value = 0.002515625, uncertainty = 1 },
+    { target_id = "r5p_c_EX", value = 0.001125, uncertainty = 1 },
+]
+
+[[experiments]]
+id = "C0.11"
+metadata = "Condition C0.11"
+metabolite_measurements = [
+    { target_id = "pi_c", value = 6.161564332200039, uncertainty = 0.269049565281864 },
+    { target_id = "6pgc_c", value = 0.41590579736174704, uncertainty = 0.0676281143338049 },
+    { target_id = "atp_c", value = 1.0306519044943498, uncertainty = 0.20989150255859804 },
+    { target_id = "adp_c", value = 0.101557572759025, uncertainty = 0.364416790398029 },
+    { target_id = "g6p_c", value = 1.0792115880644, uncertainty = 0.0987907473803644 },
+    { target_id = "fdp_c", value = 0.143067892964858, uncertainty = 0.2798249204795 },
+    { target_id = "dhap_c", value = 0.139267954705694, uncertainty = 0.205391336397907 },
+    { target_id = "nadp_c", value = 0.0012830697200945601, uncertainty = 0.179226269317311 },
+    { target_id = "nad_c", value = 1.0967820125856302, uncertainty = 0.12829611182769302 },
+    { target_id = "nadh_c", value = 0.00455816748770277, uncertainty = 0.5672332353797509 },
+    { target_id = "pyr_c", value = 2.01254283408244, uncertainty = 0.42917080997042106 },
+    { target_id = "s7p_c", value = 0.7053599204823809, uncertainty = 0.15448302834597302 },
+    { target_id = "3pg_c", value = 1.2573799023587697, uncertainty = 0.178094838437232 },
+    { target_id = "r5p_c", value = 0.0925440892995071, uncertainty = 0.157078914417073 },
+]
+
+reaction_measurements = [
+    # { target_id = "ADH", value = 0.0252, uncertainty = 0.01244},
+    { target_id = "pyr_c_EX", value = 1.415, uncertainty =  0.0213 },
+    { target_id = "dhap_c_EX", value = 0.035866389, uncertainty = 0.007513 },
+    { target_id = "r5p_c_EX", value = 0.01251, uncertainty = 0.00338},
+]
+
+enzyme_measurements = [
+    { target_id = "CDC19", value = 0.0078120318034526695, uncertainty = 0.6985699678629192 },
+    { target_id = "TKL2", value = 8.346441414314462e-05, uncertainty = 0.9622889378975528 },
+    { target_id = "PGI", value = 0.007291177707781817, uncertainty = 0.5291502622129182 },
+    { target_id = "PGK", value = 0.06753629007236882, uncertainty = 0.7874007874011811 },
+    { target_id = "TPI", value = 0.052755344465666314, uncertainty = 0.7099295739719539 },
+    { target_id = "TDH3", value = 0.041999809565093, uncertainty = 0.6811754546370561 },
+    { target_id = "PFK", value = 0.004218528421176567, uncertainty = 0.5079370039680118 },
+    { target_id = "ENO1", value = 0.02912698558366835, uncertainty = 0.91323600454647 },
+    { target_id = "SOL3", value = 0.0009414491744883636, uncertainty = 0.7238784428341544 },
+    { target_id = "ENO2", value = 0.04735465305157575, uncertainty = 0.8111719916269299 },
+    { target_id = "TDH1", value = 0.0008450707596574074, uncertainty = 0.8354639429682169 },
+    { target_id = "RPE1", value = 0.000581970851469087, uncertainty = 0.7348469228349535 },
+    { target_id = "FBA", value = 0.034906221650522325, uncertainty = 0.7681145747868608 },
+    { target_id = "GPM1", value = 0.02883716723472527, uncertainty = 0.8567379996241558 },
+    # { target_id = "PDC1", value = 0.018405786228287847, uncertainty = 0.7211102550927979 },
+    { target_id = "TAL1", value = 0.011584466247604586, uncertainty = 0.6196773353931867 },
+    { target_id = "ZWF1", value = 0.0014228545270326524, uncertainty = 0.6826419266350405 },
+    { target_id = "TKL1", value = 0.004347778756995425, uncertainty = 0.5 },
+    { target_id = "pyr_c_EX", value = 0.010984375, uncertainty = 1 },
+    { target_id = "dhap_c_EX", value = 0.00403125, uncertainty = 1 },
+    { target_id = "r5p_c_EX", value = 0.002109375, uncertainty = 1 },
+]
+
+[[experiments]]
+id = "C0.16"
+metadata = "Condition C0.16"
+metabolite_measurements = [
+    { target_id = "pi_c", value = 6.26443620408426, uncertainty = 0.35232898133295 },
+    { target_id = "6pgc_c", value = 0.513524369807877, uncertainty = 0.101630694470251 },
+    { target_id = "atp_c", value = 1.05679459576613, uncertainty = 0.325141282073913 },
+    { target_id = "adp_c", value = 0.10242356374226401, uncertainty = 0.482266336994185 },
+    { target_id = "g6p_c", value = 1.3333981625611, uncertainty = 0.21362228338811398 },
+    { target_id = "fdp_c", value = 0.212919854844047, uncertainty = 0.11627599619200699 },
+    { target_id = "dhap_c", value = 0.17238366302490699, uncertainty = 0.10772036969205802 },
+    { target_id = "nadp_c", value = 0.00146133245450561, uncertainty = 0.364036991463544 },
+    { target_id = "nad_c", value = 1.09052725670977, uncertainty = 0.146223037264095 },
+    { target_id = "nadh_c", value = 0.00518715192991261, uncertainty = 0.791143349514581 },
+    { target_id = "pyr_c", value = 2.1780774427819103, uncertainty = 0.32405935005282505 },
+    { target_id = "s7p_c", value = 0.7477226658510481, uncertainty = 0.12464680066228802 },
+    { target_id = "3pg_c", value = 1.3351558765945901, uncertainty = 0.337432579833593 },
+    { target_id = "r5p_c", value = 0.114003815292271, uncertainty = 0.15138530702955802 },
+]
+
+reaction_measurements = [
+    # { target_id = "ADH", value = 0.0545, uncertainty = 0.00888 },
+    { target_id = "pyr_c_EX", value = 2.113, uncertainty =   0.029560898 },
+    { target_id = "dhap_c_EX", value = 0.033135241, uncertainty = 0.015 },
+    { target_id = "r5p_c_EX", value = 0.01992, uncertainty = 0.00459},
+]
+
+enzyme_measurements = [
+    { target_id = "CDC19", value = 0.0071182219932388905, uncertainty = 0.6985699678629192 },
+    { target_id = "TKL2", value = 3.044318166574034e-05, uncertainty = 0.9622889378975528 },
+    { target_id = "PGI", value = 0.018458359338001457, uncertainty = 0.5291502622129182 },
+    { target_id = "PGK", value = 0.20781615264764355, uncertainty = 0.7874007874011811 },
+    { target_id = "TPI", value = 0.1544222386199167, uncertainty = 0.7099295739719539 },
+    { target_id = "TDH3", value = 0.0879278212255426, uncertainty = 0.6811754546370561 },
+    { target_id = "PFK", value = 0.011321486580928923, uncertainty = 0.5079370039680118 },
+    { target_id = "ENO1", value = 0.024293375172333327, uncertainty = 0.91323600454647 },
+    { target_id = "SOL3", value = 0.000746205008358288, uncertainty = 0.7238784428341544 },
+    { target_id = "ENO2", value = 0.04457986045711977, uncertainty = 0.8111719916269299 },
+    { target_id = "TDH1", value = 0.0021782195407947205, uncertainty = 0.8354639429682169 },
+    { target_id = "RPE1", value = 0.0006005975845719169, uncertainty = 0.7348469228349535 },
+    { target_id = "FBA", value = 0.0872478671853565, uncertainty = 0.7681145747868608 },
+    { target_id = "GPM1", value = 0.024458545690394504, uncertainty = 0.8567379996241558 },
+    # { target_id = "PDC1", value = 0.01951430349860465, uncertainty = 0.7211102550927979 },
+    { target_id = "TAL1", value = 0.012251961200250051, uncertainty = 0.6196773353931867 },
+    { target_id = "ZWF1", value = 0.0008508690829945911, uncertainty = 0.6826419266350405 },
+    { target_id = "TKL1", value = 0.004986155598775826, uncertainty = 0.5 },
+    { target_id = "pyr_c_EX", value = 0.01515625, uncertainty = 1 },
+    { target_id = "dhap_c_EX", value = 0.003, uncertainty = 1 },
+    { target_id = "r5p_c_EX", value = 0.002734375, uncertainty = 1 },
+]
+
+[[experiments]]
+id = "C0.22"
+metadata = "Condition C0.22"
+metabolite_measurements = [
+    { target_id = "pi_c", value = 5.914096787732821, uncertainty = 0.275027785060619 },
+    { target_id = "6pgc_c", value = 0.6516552693356401, uncertainty = 0.23381567802957 },
+    { target_id = "atp_c", value = 1.01798237060551, uncertainty = 0.359348164938804 },
+    { target_id = "adp_c", value = 0.10450645568985699, uncertainty = 0.32742545326056105 },
+    { target_id = "g6p_c", value = 1.04720023992049, uncertainty = 0.18102597919882502 },
+    { target_id = "fdp_c", value = 0.22364300332733397, uncertainty = 0.212975144112892 },
+    { target_id = "dhap_c", value = 0.21426901237834298, uncertainty = 0.0796714588264511 },
+    { target_id = "nadp_c", value = 0.00131538114365704, uncertainty = 0.821992051782253 },
+    { target_id = "nad_c", value = 1.0437915941832099, uncertainty = 0.21969725485414499 },
+    { target_id = "nadh_c", value = 0.00831691039068503, uncertainty = 0.5448638631045121 },
+    { target_id = "pyr_c", value = 2.48384754375612, uncertainty = 0.239967664195969 },
+    { target_id = "s7p_c", value = 0.702605482576053, uncertainty = 0.0828596657570595 },
+    { target_id = "3pg_c", value = 0.7498025913446361, uncertainty = 0.392137336857329 },
+    { target_id = "r5p_c", value = 0.136475431355327, uncertainty = 0.117629530991279 },
+]
+
+reaction_measurements = [
+    # { target_id = "ADH", value = 2.224, uncertainty = 0.2889 },
+    { target_id = "pyr_c_EX", value = 4.70, uncertainty =  0.43 },
+    { target_id = "dhap_c_EX", value = 0.2312, uncertainty = 0.135593 },
+    { target_id = "r5p_c_EX", value = 0.02844, uncertainty = 0.00601},
+
+]
+
+enzyme_measurements = [
+    { target_id = "CDC19", value = 0.007796704251551009, uncertainty = 0.6985699678629192 },
+    { target_id = "TKL2", value = 7.453648137285581e-06, uncertainty = 0.9622889378975528 },
+    { target_id = "PGI", value = 0.007312481976954154, uncertainty = 0.5291502622129182 },
+    { target_id = "PGK", value = 0.06568043523278835, uncertainty = 0.7874007874011811 },
+    { target_id = "TPI", value = 0.055323548667829195, uncertainty = 0.7099295739719539 },
+    { target_id = "TDH3", value = 0.03098410714645497, uncertainty = 0.6811754546370561 },
+    { target_id = "PFK", value = 0.0046531944507816995, uncertainty = 0.5079370039680118 },
+    { target_id = "ENO1", value = 0.025330057558695645, uncertainty = 0.91323600454647 },
+    { target_id = "SOL3", value = 0.0006782644151603346, uncertainty = 0.7238784428341544 },
+    { target_id = "ENO2", value = 0.04700749826024958, uncertainty = 0.8111719916269299 },
+    { target_id = "TDH1", value = 0.0007136001074622682, uncertainty = 0.8354639429682169 },
+    { target_id = "RPE1", value = 0.000554635326129069, uncertainty = 0.7348469228349535 },
+    { target_id = "FBA", value = 0.026038026841293218, uncertainty = 0.7681145747868608 },
+    { target_id = "GPM1", value = 0.026827122423614763, uncertainty = 0.8567379996241558 },
+    # { target_id = "PDC1", value = 0.023675624119829472, uncertainty = 0.7211102550927979 },
+    { target_id = "TAL1", value = 0.01332340088588742, uncertainty = 0.6196773353931867 },
+    { target_id = "ZWF1", value = 0.0020537050993939218, uncertainty = 0.6826419266350405 },
+    { target_id = "TKL1", value = 0.005306886064840729, uncertainty = 0.5 },
+    { target_id = "pyr_c_EX", value = 0.0295625, uncertainty = 1 },
+    { target_id = "dhap_c_EX", value = 0.016859375, uncertainty = 1 },
+    { target_id = "r5p_c_EX", value = 0.00325, uncertainty = 1 },
+]
+
+[[experiments]]
+id = "C0.30"
+metadata = "Condition C0.30"
+metabolite_measurements = [
+    { target_id = "pi_c", value = 5.77758833863775, uncertainty = 0.286389056487507 },
+    { target_id = "6pgc_c", value = 0.37541356008009, uncertainty = 0.264013739409864 },
+    { target_id = "atp_c", value = 0.8924000905628051, uncertainty = 0.29817479624199295 },
+    { target_id = "adp_c", value = 0.09377872005489692, uncertainty = 0.389558072079481 },
+    { target_id = "g6p_c", value = 1.73286638960454, uncertainty = 0.14328938127295301 },
+    { target_id = "fdp_c", value = 1.0588817389442198, uncertainty = 0.35704261178412805 },
+    { target_id = "dhap_c", value = 0.485030889913789, uncertainty = 0.130526074278176 },
+    { target_id = "nadp_c", value = 0.00120807163592138, uncertainty = 0.588184265406906 },
+    { target_id = "nad_c", value = 0.80747888932375, uncertainty = 0.184755696933527 },
+    { target_id = "nadh_c", value = 0.0197705984087266, uncertainty = 0.41843621309865797 },
+    { target_id = "pyr_c", value = 3.43936463024126, uncertainty = 0.37614685794512304 },
+    { target_id = "s7p_c", value = 0.402487295644525, uncertainty = 0.0857753324461636 },
+    { target_id = "3pg_c", value = 0.682840874608815, uncertainty = 0.32394956676198 },
+    { target_id = "r5p_c", value = 0.181792246869467, uncertainty = 0.12579710160303 },
+]
+
+reaction_measurements = [
+
+    # { target_id = "ADH", value = 5.97, uncertainty = 0.773 }, removed reactions after pyruvate
+    { target_id = "pyr_c_EX", value = 7.48, uncertainty =  1.71 },
+    { target_id = "dhap_c_EX", value = 0.58500767, uncertainty = 0.171209 },
+    { target_id = "r5p_c_EX", value = 0.03846, uncertainty = 0.00803 },
+]
+
+enzyme_measurements = [
+    { target_id = "CDC19", value = 0.008927029924450774, uncertainty = 0.6985699678629192 },
+    { target_id = "TKL2", value = 6.660782239823759e-06, uncertainty = 0.9622889378975528 },
+    { target_id = "PGI", value = 0.005863258792805356, uncertainty = 0.5291502622129182 },
+    { target_id = "PGK", value = 0.0532196537035706, uncertainty = 0.7874007874011811 },
+    { target_id = "TPI", value = 0.05019376496952055, uncertainty = 0.7099295739719539 },
+    { target_id = "TDH3", value = 0.027785613851307185, uncertainty = 0.6811754546370561 },
+    { target_id = "PFK", value = 0.004889032877095963, uncertainty = 0.5079370039680118 },
+    { target_id = "ENO1", value = 0.02318411183881716, uncertainty = 0.91323600454647 },
+    { target_id = "SOL3", value = 0.0006760886961867392, uncertainty = 0.7238784428341544 },
+    { target_id = "ENO2", value = 0.04779944502128943, uncertainty = 0.8111719916269299 },
+    { target_id = "TDH1", value = 0.0006821780574170008, uncertainty = 0.8354639429682169 },
+    { target_id = "RPE1", value = 0.0005589771636835602, uncertainty = 0.7348469228349535 },
+    { target_id = "FBA", value = 0.025738043640994974, uncertainty = 0.7681145747868608 },
+    { target_id = "GPM1", value = 0.02665794680074505, uncertainty = 0.8567379996241558 },
+    # { target_id = "PDC1", value = 0.028540499481040982, uncertainty = 0.7211102550927979 },
+    { target_id = "TAL1", value = 0.011512184253046375, uncertainty = 0.6196773353931867 },
+    { target_id = "ZWF1", value = 0.0019154989731524855, uncertainty = 0.6826419266350405 },
+    { target_id = "TKL1", value = 0.005082047839369598, uncertainty = 0.5 },
+    { target_id = "pyr_c_EX", value = 0.033984375, uncertainty = 1 },
+    { target_id = "dhap_c_EX", value = 0.018875, uncertainty = 1 },
+    { target_id = "r5p_c_EX", value = 0.0033, uncertainty = 1 },
+]

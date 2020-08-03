@@ -1,0 +1,215 @@
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -4. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -4. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -4. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: inference_model_yeast_ethanol_fx_no_split_compartment_model_namespace::log_prob: conc[sym1__][16] is -7.0976e-39, but must be greater than or equal to 0 (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 368, column 2 to column 44)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: integrate_ode_cvodes: parameter vector[2] is inf, but must be finite! (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 377, column 4 to line 386, column 42)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: integrate_ode_cvodes: parameter vector[19] is inf, but must be finite! (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 377, column 4 to line 386, column 42)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
+Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+Exception: CVode failed with error flag -1. (in '/home/nicholas/Models/results/july-2020/yeast_ma/inference_model_yeast_ethanol_fx_no_split_compartment.stan', line 287, column 2 to line 304, column 4)
+If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+
